@@ -1,0 +1,23 @@
+n = int(input())
+customers = list(map(int, input().split()))
+leader_capacity, member_capacity = \
+            tuple(map(int, input().split()))
+
+def required_member_num(customer_num):
+    if customer_num <= 0:
+        return 0
+    
+    if customer_num % member_capacity == 0:
+        return customer_num // member_capacity
+
+    else:
+        return (customer_num // member_capacity) + 1
+
+
+ans = 0
+
+for customer_num in customers:
+    ans += 1
+    ans += required_member_num(customer_num - leader_capacity)
+
+print(ans)
